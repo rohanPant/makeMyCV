@@ -1,0 +1,215 @@
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Fill Me Up!</title>
+
+
+    <script src="js/modernizr.custom.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.2.61/jspdf.min.js"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Material Design Bootstrap -->
+    <link href="css/mdb.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/css/bootstrap.min.css" integrity="sha384-MIwDKRSSImVFAZCVLtU0LMDdON6KVCrZHyVQQj6e8wIEJkW4tvwqXrbMIya1vriY" crossorigin="anonymous">
+
+    <!-- Your custom styles (optional) -->
+    <link href="css/gridCV.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div id="chooseTemplateForm">
+        <div class="row">
+            <div class="col-xs-12 padDiv">
+                <p class="h2-responsive divider-new centerMeNow wow fadeInDown">GO AHEAD, SELECT A TEMPLATE OF YOUR CHOICE</p>
+            </div>
+        </div>
+        <div class="row ">
+            <div class="card-deck-wrapper padDivCorners">
+                <div class="card-deck">
+                    <div id="template1" class="card templateTheme">
+                        <img class="card-img-top" src=img/t1.PNG alt="Card image cap">
+                        <div class="card-block">
+                            <h4 class="card-title">ELEGANT - BLACK</h4>
+                        </div>
+                    </div>
+                    <div id="template2" class="card templateTheme">
+                        <img class="card-img-top" src=img/t2.PNG alt="Card image cap">
+                        <div class="card-block">
+                            <h4 class="card-title">ELEGANT - BLUE</h4>
+                        </div>
+                    </div>
+                    <div id="template3" class="card templateTheme">
+                        <img class="card-img-top" src=img/t3.PNG alt="Card image cap">
+                        <div class="card-block">
+                            <h4 class="card-title">BOLD - BLACK</h4>
+                        </div>
+                    </div>
+                    <div id="template4" class="card templateTheme">
+                        <img class="card-img-top" src=img/t4.PNG alt="Card image cap">
+                        <div class="card-block">
+                            <h4 class="card-title">BOLD - BLUE</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id = 'mainContainer'>
+        <div id = 'userFormFillSection' class="card-deck-wrapper" style="display:none">
+            <div class="card-deck padForm">
+
+                <div class="card card-block text-xs-center" id = 'fillingForm'>
+                    <h4 id = 'formHeader' class="card-title">Special title treatment</h4>
+                    <!-- <button class="btn btn-primary" style="position:absolute;right:0px;top:0px;border-radius:0px" id = 'showPreviewButton'>Preview</button> -->
+
+                    <form id='basicInfo'>
+                        <input type='text' id='firstName' placeholder='First Name' />
+                        <br/>
+                        <input type='text' id='lastName' placeholder='Last Name' />
+                        <br/>
+                        <input type='number' id='contact' placeholder='Phone Number' />
+                        <br/>
+                        <input type='email' id='userMail' placeholder='Email Address' />
+                        <br/>
+                        <input type='text' id='userWebsite' placeholder='Website' />
+                        <br/>
+                        <input id='submitBasicInfo' type='submit' value='Yo!' class="btn btn-primary"/>
+                    </form>
+
+                    <form id='skillForm'>
+                        <input type='text' class='skill' placeholder='enter the skill' />
+                        <br/>
+                        <button id='addSkill' class="btn btn-primary">Add another Skill!</button>
+                        <input type='submit' id='submitSkills' value='Yo!' class="btn btn-primary" />
+                    </form>
+
+                    <form id='userExperienceForm'>
+                        <input type='text' class='jobTitle' placeholder='Job Title' />
+                        <br/>
+                        <input type='text' class='companyName' placeholder='Enter Company Name' />
+                        <br/>
+                        <input type='text' class='jobResponsibility' placeholder='Your Job Responsibilities' />
+                        <br/>
+                        <button id='addExperience' class="btn btn-primary">Add more Experience</button>
+                        <input type='submit' id='submitUserExperienceForm' value='Yo!' class="btn btn-primary" />
+                    </form>
+
+                    <form id='userEducationForm'>
+                        <input type='text' class='institutionName' placeholder='Institute Name' />
+                        <br/>
+                        <input type='text' class='completionDate' placeholder='Your completion date' />
+                        <br/>
+                        <input type='text' class='degree' placeholder='Give Degree' />
+                        <br/>
+                        <button id='addEducation' class="btn btn-primary" >Add More :)</button>
+                        <input type='submit' id='submitEducationForm' value='Yo!' class="btn btn-primary"/>
+                    </form>
+
+                    <form id='userHobbiesForm'>
+                        <input type='text' class='hobbies' placeholder='enter your hobby' />
+                        <br/>
+                        <button id='addHobby' class="btn btn-primary">Add another hobby!</button>
+                        <input type='submit' id='submitHobbies' value='Yo!' class="btn btn-primary" />
+                    </form>
+
+                    <form id='selectFormatForm'>
+                        <a href='' class="btn btn-primary" download='index.html' id='htmlFormat'>HTML Format</a>
+                        <button class="btn btn-primary" id='pdfFormat'>PDF Format</button>
+                    </form>
+                    <a href="" id = 'prevButton' class="btn btn-primary">Previous</a>
+                    <hr/>
+                </div>
+
+                <div class="" id = 'resumePreviewID'>
+                    <!-- <h4 class="card-title">Special title treatment</h4> -->
+                    <div id="formPreview" class = 'marginMe' >
+                        <div id='previewFormSection' >
+                            <div class="row" style="text-align:left">
+                                <div class="col basicInfo">
+                                    <h2 id="t_firstName">Lala</h2>
+                                    <h2 id="t_lastName"> La</h2>
+                                    <br>
+                                    <h6 id=t_phone>123456789</h6>
+                                    <h6 id=t_email>lala@lala.com</h6>
+                                    <h6 id=t_website>www.lala.co  m</h6>
+                                </div>
+                            </div>
+                            <br/>
+
+                            <div class="row">
+                                <div class="col woekEx ">
+                                    <div class="col blueDiv blackDiv">
+                                        <h4>Skills</h4>
+                                    </div>
+                                    <ul id="t_skills">
+                                        <li>Skills1</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col woekEx ">
+                                    <div class="col blueDiv blackDiv">
+                                        <h4>Work Experience</h4>
+                                    </div>
+                                    <ul id="t_experience">
+                                        <li>
+                                            <p class="t_jobTitle">Job Title</p>
+                                            <p class="t_companyName">Company Name</p>
+                                            <p class="t_jobResponsibilities">Job Responsibilities</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col education">
+                                    <div class="col blueDiv blackDiv">
+                                        <h4>Education</h4>
+                                    </div>
+                                    <ul id="t_education">
+                                        <li>
+                                            <p class="t_institute">Institute Name</p>
+                                            <p class="t_pass">Pass out year</p>
+                                            <p class="t_degree">Degree</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col">
+                                    <div class="col blueDiv blackDiv">
+                                        <h4>Noteworthy Information</h4>
+                                    </div>
+                                    <ul id="t_nInfo">
+                                        <li>Sports captain in tthe 11th and 12th grade in school.</li>
+                                        <li>Active quizer.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- JQuery -->
+    <!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>-->
+    <script src="js/jquery-2.2.3.min.js"></script>
+    <script type="text/javascript" src="js/htmlCanvas.js"></script>
+    <script src = 'js/main.js'></script>
+</body>
