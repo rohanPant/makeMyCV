@@ -13,8 +13,8 @@
         htmlFormat = $('#htmlFormat'),
         pdfFormat = $('#pdfFormat'),
         isPreviewCloseButtonVisible = false,
-        formIdArray = ['chooseTemplateForm', 'basicInfo', 'skillForm', 'userExperienceForm', 'userEducationForm', 'userHobbiesForm', 'selectFormatForm'],
-        formDescriptionArray = ['Choose a Template :)', 'Basic Information', 'Skill Set', 'Experience', 'Education', 'Other Notable Info', 'Choose a Format'],
+        formIdArray = ['chooseTemplateForm', 'basicInfo', 'skillForm', 'userExperienceForm', 'userEducationForm', 'userProjectForm', 'userHobbiesForm', 'selectFormatForm'],
+        formDescriptionArray = ['Choose a Template :)', 'Basic Information', 'Skill Set', 'Experience', 'Education', 'Projects',' Other Notable Info', 'Choose a Format'],
         // templateArray = ['black_genesis', 'blue_genesis', 'blue_3d_genesis', 'black_3d_genesis'],
 
         //parameters for form values
@@ -31,6 +31,11 @@
         completionDateArr = [],
         userDegreeArr = [],
 
+        //parameters for user Projects
+        projectTitleArr = [],
+        projectDescriptionArr = [],
+        projectLinkArr = [],
+
         userHobbiesArr = [],
 
         //preview form parameters
@@ -42,9 +47,13 @@
         t_skills = $('#t_skills'),
         t_experience = $('#t_experience'),
         t_education = $('#t_education'),
+        t_project = $('#t_project'),
         t_nInfo = $('#t_nInfo');
 
-
+    /*
+    * click event when the user chooses the template
+    * show the next form
+    */
     templateTheme.on('click', function (e) {
         e.preventDefault();
         var currFormID = "chooseTemplateForm";
@@ -55,7 +64,9 @@
         basicFunctions.processNextForm(currFormID);
     });
 
-
+    /*
+    * event for handling the submission of the basic Info of the users
+    */
     basicInfo.on('submit', function (e) {
         e.preventDefault();
         var currFormID = this.id;
@@ -77,11 +88,17 @@
         basicFunctions.processNextForm(currFormID);
     });
 
+
+    // addSkill to add the new skill field in the DOM
     $('#addSkill').click(function (e) {
         e.preventDefault();
-        $('#addSkill').before("<br/><input type = 'text' class = 'skill' placeholder = 'enter the skill'/><br/>");
+        $('#addSkill').before("<br/><input type = 'text' required class = 'skill' placeholder = 'enter the skill'/><br/>");
     });
 
+    /*
+    * event to handle the submission of the skill form
+    * and then show the next form
+    */
     skillForm.on('submit', function (e) {
         e.preventDefault();
         userSkillArr = [];
@@ -96,13 +113,17 @@
         basicFunctions.processNextForm(currFormID);
     });
 
+    // addExperience to add the new experience field in the DOM
     $('#addExperience').click(function (e) {
         e.preventDefault();
-        var item = "<br/><input type = 'text' class = 'jobTitle' placeholder = 'Job Title' /><br/><input type = 'text' class = 'companyName' placeholder = 'Enter Company Name' /><br/><input type = 'text' class = 'jobResponsibility' placeholder = 'Your Job Responsibilities' /><br/>";
+        var item = "<br/><input type = 'text' required class = 'jobTitle' placeholder = 'Job Title' /><br/><input type = 'text' class = 'companyName' required placeholder = 'Enter Company Name' /><br/><input type = 'text' class = 'jobResponsibility' required placeholder = 'Your Job Responsibilities' /><br/>";
         $('#addExperience').before(item);
     });
 
-
+    /*
+    * event to handle the submission of the user experience form
+    * and then show the next form
+    */
     userExperienceForm.on('submit', function (e) {
         e.preventDefault();
         userJobTitleArr = []
@@ -124,38 +145,67 @@
         basicFunctions.processNextForm(currFormID);
     });
 
+    // addEducation to add the new education field in the DOM
     $('#addEducation').on('click', function (e) {
         e.preventDefault();
-        var item = "<br/><input type = 'text' class = 'institutionName' placeholder = 'Institute Name' /><br/><input type = 'text' class = 'completionDate' placeholder = 'Your completion date' /><br/><input type = 'text' class = 'degree' placeholder = 'Give Degree' /><br/>";
+        var item = "<br/><input type = 'text' required  class = 'institutionName' placeholder = 'Institute Name' /><br/><input type = 'text' class = 'completionDate' required placeholder = 'Your completion date' /><br/><input type = 'text' class = 'degree' required placeholder = 'Give Degree' /><br/>";
         $('#addEducation').before(item);
     });
 
 
     userEducationForm.on('submit', function (e) {
         e.preventDefault();
-        institutionNameArr = []
-        completionDateArr = []
-        userDegreeArr = []
         var currFormID = this.id;
+        institutionNameArr = [];
+        completionDateArr = [];
+        userDegreeArr = [];
         var institutionNameInput = document.getElementsByClassName('institutionName'),
-            s
-        completionDateInput = document.getElementsByClassName('completionDate'),
+            completionDateInput = document.getElementsByClassName('completionDate'),
             userDegreeInput = document.getElementsByClassName('degree');
         for (var i = 0; i < institutionNameInput.length; i++) {
             institutionNameArr.push(institutionNameInput[i].value);
             completionDateArr.push(completionDateInput[i].value);
             userDegreeArr.push(userDegreeInput[i].value);
         }
-        console.log(institutionNameArr);
-        console.log(completionDateArr);
-        console.log(userDegreeArr);
+        // console.log(institutionNameArr);
+        // console.log(completionDateArr);
+        // console.log(userDegreeArr);
         basicFunctions.populateUserEducationForm();
         basicFunctions.processNextForm(currFormID);
     });
 
+
+    $('#addProject').on('click', function (e) {
+        e.preventDefault();
+        var item = "<br/><input type = 'text' required class = 'projectTitle' placeholder = 'Project Title' /><br/><input type = 'text' required class = 'projectDescription' placeholder = 'Project Description' /><br/><input type = 'text' class = 'projectLink' placeholder = 'Provide project URL' /><br/>";
+        $('#addProject').before(item);
+    });
+
+
+    $('#userProjectForm').on('submit', function(e){
+        e.preventDefault();
+        var currFormId = this.id;
+        projectTitleArr = [];
+        projectDescriptionArr = [];
+        projectLinkArr = [];
+        var projectTitleInput = document.getElementsByClassName('projectTitle'),
+            projectDescriptionInput = document.getElementsByClassName('projectDescription'),
+            projectLinkInput = document.getElementsByClassName('projectLink');
+        for(var i = 0; i < projectTitleInput.length; i++){
+          projectTitleArr.push(projectTitleInput[i].value);
+          projectDescriptionArr.push(projectDescriptionInput[i].value);
+          projectLinkArr.push(projectLinkInput[i].value);
+        }
+        console.log(projectTitleArr);
+        console.log(projectDescriptionArr);
+        console.log(projectLinkArr);
+        basicFunctions.populateUserProjectsForm();
+        basicFunctions.processNextForm(currFormId);
+    });
+
     $('#addHobby').click(function (e) {
         e.preventDefault();
-        var item = "<br/><input type = 'text' class = 'hobbies' placeholder = 'enter your hobby'/><br/>";
+        var item = "<br/><input type = 'text' class = 'hobbies' required placeholder = 'enter your hobby'/><br/>";
         $('#addHobby').before(item);
     });
 
@@ -173,6 +223,7 @@
     });
 
     prevButton.click(function (e) {
+        e.preventDefault();
         var prevIndex = currentIndex - 1,
             prevFormId = formIdArray[prevIndex],
             currFormID = formIdArray[currentIndex];
@@ -187,6 +238,8 @@
     });
 
     var basicFunctions = {
+
+        //get the index of the required form from the formIdArray
         getFormIndex: function (formString) {
             var index = formIdArray.indexOf(formString);
             if (index != -1) {
@@ -194,11 +247,13 @@
             }
         },
 
+        //get the count of the no of the total forms
         getFormArrCount: function () {
             var arrLen = formIdArray.length;
             return arrLen;
         },
 
+        //get the index of the next form by passing the current form id
         getIndexOfNextForm: function (currFormID) {
             var currFormIndex = basicFunctions.getFormIndex(currFormID);
             if (currFormIndex + 1 < basicFunctions.getFormArrCount()) {
@@ -208,6 +263,7 @@
             }
         },
 
+        //get the index of the previous form by passing the current form id
         getIndexOfPreviousForm: function (currFormID) {
             var currFormIndex = basicFunctions.getFormIndex(currFormID);
             if (currFormIndex - 1 > -1) {
@@ -217,6 +273,7 @@
             }
         },
 
+        //show the next form and hide the current form
         processNextForm: function (currFormID) {
             var nextFormIndex = basicFunctions.getIndexOfNextForm(currFormID);
             if (nextFormIndex != -1) {
@@ -282,6 +339,18 @@
             }
         },
 
+        populateUserProjectsForm :  function(){
+          t_project.empty();
+          for(var i = 0 ;i < projectTitleArr.length; i++){
+            var item =  "<li>" +
+                        '<p class="t_project_title">'+ projectTitleArr[i] +'</p>' +
+                        '<p class="t_project_desc">'+ projectDescriptionArr[i] +'</p>' +
+                        '<p class="t_project_link">'+ projectLinkArr[i] +'</p>' +
+                        "</li><hr/>";
+            t_project.append(item);
+          }
+        },
+
         populateNoteworthyInfoForm: function () {
             t_nInfo.empty();
             for (var i = 0; i < userHobbiesArr.length; i++) {
@@ -303,17 +372,27 @@
             $('.marginMe h4').css('text-align', 'left');
             $('.blueDiv').css('background', 'none');
             $('.blackDiv').css('background-color', 'none');
-            if (template == 'template1') {} else if (template == 'template2') {
+            if (template == 'template1') {
+              $('#formPreview').css("font-family", "'Quicksand', sans-serif");
+              $('#previewFormSection').css("font-family", "'Quicksand', sans-serif");
+            }
+            else if (template == 'template2') {
                 $('.marginMe h2,h4').css('color', 'cadetblue');
+                $('#formPreview').css("font-family", "'Quicksand', sans-serif");
+                $('#previewFormSection').css("font-family", "'Quicksand', sans-serif");
             } else if (template == 'template3') {
                 $('.marginMe h4').css('color', 'white');
                 $('.marginMe h4').css('text-align', 'center');
                 $('.blueDiv').css('background', 'cadetblue');
                 $('.marginMe h2').css('color', 'cadetblue');
+                $('#formPreview').css("font-family", "'Source Code Pro', monospace");
+                $('#previewFormSection').css("font-family", "'Source Code Pro', monospace");
             } else if (template == 'template4') {
                 $('.marginMe h4').css('color', 'white');
                 $('.marginMe h4').css('text-align', 'center');
                 $('.blackDiv').css('background-color', 'black');
+                $('#formPreview').css("font-family", "'Source Code Pro', monospace");
+                $('#previewFormSection').css("font-family", "'Source Code Pro', monospace");
             }
         },
 
@@ -370,9 +449,9 @@
 
     $('#showPreviewButton').click(function(){
       $('#fillingForm').hide();
-      $('#resumePreviewID').css('left', '20%');
+      $('#resumePreviewID').css('left', '25%');
       if(!isPreviewCloseButtonVisible){
-        $('#resumePreviewID').append('<button class = "btn btn-primary" style = "position:absolute;right:0px" onclick = "closePreviewForm()">Close</button>');
+        $('#resumePreviewID').append('<button class = "btn btn-primary" style = "position:absolute;right:0px;top:-30px" onclick = "closePreviewForm()">Close</button>');
         isPreviewCloseButtonVisible = true;
       }
     });

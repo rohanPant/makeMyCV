@@ -4,6 +4,9 @@
     margin-bottom: 2.5rem;
 }
 
+#template1{
+  display: none;
+}
 /*
 .navbar.navbar-dark .navbar-nav .nav-item a {
     color: black;
