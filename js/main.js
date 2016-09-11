@@ -12,6 +12,7 @@
         formPreviewDiv = $('#formPreview'),
         htmlFormat = $('#htmlFormat'),
         pdfFormat = $('#pdfFormat'),
+        htmlFormatHead = '',
         isPreviewCloseButtonVisible = false,
         formIdArray = ['chooseTemplateForm', 'basicInfo', 'skillForm', 'userExperienceForm', 'userEducationForm', 'userProjectForm', 'userHobbiesForm', 'selectFormatForm'],
         formDescriptionArray = ['Choose a Template :)', 'Basic Information', 'Skill Set', 'Experience', 'Education', 'Projects',' Other Notable Info', 'Choose a Format'],
@@ -378,12 +379,14 @@
             $('.card-title').css('color', 'black');
             if (template == 'template1') {
               $('#formPreview').css("font-family", "'Rajdhani', sans-serif'");
+              htmlFormatHead = '<link href="https://fonts.googleapis.com/css?family=Rajdhani" rel="stylesheet">';
               $('#previewFormSection').css("font-family", "'Rajdhani', sans-serif");
             }
             else if (template == 'template2') {
                 $('.marginMe h2,h4').css('color', 'cadetblue');
                 $('#formPreview').css("font-family", "'Rajdhani', sans-serif'");
                 $('#previewFormSection').css("font-family", "'Rajdhani', sans-serif");
+                htmlFormatHead = '<link href="https://fonts.googleapis.com/css?family=Rajdhani" rel="stylesheet">';
             } else if (template == 'template3') {
                 $('.marginMe h4').css('color', 'white');
                 $('.marginMe h4').css('text-align', 'center');
@@ -391,12 +394,14 @@
                 $('.marginMe h2').css('color', 'cadetblue');
                 $('#formPreview').css("font-family", "'Source Code Pro', monospace");
                 $('#previewFormSection').css("font-family", "'Source Code Pro', monospace");
+                htmlFormatHead = '<link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet">';
             } else if (template == 'template4') {
                 $('.marginMe h4').css('color', 'white');
                 $('.marginMe h4').css('text-align', 'center');
                 $('.blackDiv').css('background-color', 'black');
                 $('#formPreview').css("font-family", "'Source Code Pro', monospace");
                 $('#previewFormSection').css("font-family", "'Source Code Pro', monospace");
+                htmlFormatHead = '<link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet">';
             }
         },
 
@@ -417,8 +422,9 @@
 
     htmlFormat.on('click', function (e) {
         var htmlForm = $('.marginMe').html();
-        console.log(htmlForm);
-        this.href = 'data:text/html;charset=utf-8,' + encodeURIComponent(htmlForm);
+        var htmlString = '<html><head>'+ htmlFormatHead +'</head><body>'+ htmlForm +'</body></html>';
+        console.log(htmlString);
+        this.href = 'data:text/html;charset=utf-8,' + encodeURIComponent(htmlString);
     });
 
     //create a pdf function
