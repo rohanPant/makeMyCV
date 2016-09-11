@@ -1,6 +1,14 @@
 <html>
 
 <head>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="icon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="icon/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="icon/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="icon/manifest.json">
+    <link rel="mask-icon" href="icon/safari-pinned-tab.svg" color="#000000">
+    <meta name="theme-color" content="#ffffff">
+
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -73,13 +81,13 @@
     </div>
 
 
-    <div id = 'mainContainer' style="overflow-x:hidden">
-        <div id = 'userFormFillSection' class="card-deck-wrapper" style="display:none">
+    <div id='mainContainer' style="overflow-x:hidden">
+        <div id='userFormFillSection' class="card-deck-wrapper" style="display:none">
             <div class="card-deck padForm">
 
-                <div class="card card-block text-xs-center" id = 'fillingForm'>
-                    <h4 id = 'formHeader' class="card-title">Special title treatment</h4>
-                    <button class="btn btn-primary" style="position:absolute;right:0px;top:-50px;border-radius:0px" id = 'showPreviewButton'>Preview</button>
+                <div class="card card-block text-xs-center" id='fillingForm'>
+                    <h4 id='formHeader' class="card-title">Special title treatment</h4>
+                    <button class="btn btn-primary" style="position:absolute;right:0px;top:-50px;border-radius:0px" id='showPreviewButton'>Preview</button>
 
                     <form id='basicInfo'>
                         <input type='text' id='firstName' required placeholder='First Name' />
@@ -92,18 +100,18 @@
                         <br/>
                         <input type='text' id='userWebsite' placeholder='Website' />
                         <br/>
-                        <input id='submitBasicInfo' type='submit' value='NEXT' class="btn btn-primary"/>
+                        <input id='submitBasicInfo' type='submit' value='NEXT' class="btn btn-primary" />
                     </form>
 
                     <form id='skillForm'>
-                        <input type='text' class='skill' required  placeholder='Enter The Skill' />
+                        <input type='text' class='skill' required placeholder='Enter The Skill' />
                         <br/>
                         <button id='addSkill' class="btn btn-primary">ADD MORE SKILLS</button>
                         <input type='submit' id='submitSkills' value='NEXT' class="btn btn-primary" />
                     </form>
 
                     <form id='userExperienceForm'>
-                        <input type='text' class='jobTitle' required  placeholder='Job Title' />
+                        <input type='text' class='jobTitle' required placeholder='Job Title' />
                         <br/>
                         <input type='text' class='companyName' required placeholder='Enter Company Name' />
                         <br/>
@@ -120,8 +128,8 @@
                         <br/>
                         <input type='text' class='degree' required placeholder='Degree' />
                         <br/>
-                        <button id='addEducation' class="btn btn-primary" >ADD MORE QUALIFICATION</button>
-                        <input type='submit' id='submitEducationForm' value='NEXT' class="btn btn-primary"/>
+                        <button id='addEducation' class="btn btn-primary">ADD MORE QUALIFICATION</button>
+                        <input type='submit' id='submitEducationForm' value='NEXT' class="btn btn-primary" />
                     </form>
 
                     <form id='userProjectForm'>
@@ -131,8 +139,8 @@
                         <br/>
                         <input type='text' class='projectLink' placeholder='Provide project URL' />
                         <br/>
-                        <button id='addProject' class="btn btn-primary" >Add More :)</button>
-                        <input type='submit' id='submitProjectForm' value='NEXT' class="btn btn-primary"/>
+                        <button id='addProject' class="btn btn-primary">Add More :)</button>
+                        <input type='submit' id='submitProjectForm' value='NEXT' class="btn btn-primary" />
                     </form>
 
                     <form id='userHobbiesForm'>
@@ -146,14 +154,14 @@
                         <a href='' class="btn btn-primary" download='index.html' id='htmlFormat'>HTML Format</a>
                         <button class="btn btn-primary" id='pdfFormat'>PDF Format</button>
                     </form>
-                    <a href="" id = 'prevButton' class="btn btn-primary">Previous</a>
+                    <a href="" id='prevButton' class="btn btn-primary">Previous</a>
                     <hr/>
                 </div>
 
-                <div class="" id = 'resumePreviewID'>
+                <div class="" id='resumePreviewID'>
                     <!-- <h4 class="card-title">Special title treatment</h4> -->
-                    <div id="formPreview" class = 'marginMe' >
-                        <div id='previewFormSection' >
+                    <div id="formPreview" class='marginMe'>
+                        <div id='previewFormSection'>
                             <div class="row" style="text-align:left">
                                 <div class="col basicInfo">
                                     <h2 id="t_firstName">Bruce</h2>
@@ -243,5 +251,5 @@
     <!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>-->
     <script src="js/jquery-2.2.3.min.js"></script>
     <script type="text/javascript" src="js/htmlCanvas.js"></script>
-    <script src = 'js/main.js'></script>
+    <script src='js/main.js'></script>
 </body>
