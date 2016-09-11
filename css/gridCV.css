@@ -18,15 +18,21 @@
     display: none;
 }
 
+#userProjectForm{
+  display: none;
+}
+
 #formPreview {
     position: absolute;
     right: 0px;
+    /*right: 0px;
     height: 100%;
     width: 100%;
-    top: 0px;
-    display: none;
+    top: 0px;*/
     padding-left: 18px;
       /*border: 1px solid black;*/
+    /*font-family: 'Slabo 27px', serif;*/
+    /*font-family: 'Quicksand', sans-serif;*/
     left: 0px;
 }
 
@@ -135,10 +141,12 @@
 @media(max-width : 800px){
   #resumePreviewID{
     position: absolute;
+    left: -60%;
+    /*position: absolute;
     top:500px;
     left: 18%;
     width: 60%;
-    border-top: 3px solid black;
+    border-top: 3px solid black;*/
   }
 
   #fillingForm{
