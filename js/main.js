@@ -377,13 +377,13 @@
             $('.blackDiv').css('background-color', 'none');
             $('.card-title').css('color', 'black');
             if (template == 'template1') {
-              $('#formPreview').css("font-family", "'GFS Didot', serif'");
-              $('#previewFormSection').css("font-family", "'GFS Didot', sans-serif");
+              $('#formPreview').css("font-family", "'Rajdhani', sans-serif'");
+              $('#previewFormSection').css("font-family", "'Rajdhani', sans-serif");
             }
             else if (template == 'template2') {
                 $('.marginMe h2,h4').css('color', 'cadetblue');
-                $('#formPreview').css("font-family", "'GFS Didot', serif'");
-                $('#previewFormSection').css("font-family", "'GFS Didot', sans-serif");
+                $('#formPreview').css("font-family", "'Rajdhani', sans-serif'");
+                $('#previewFormSection').css("font-family", "'Rajdhani', sans-serif");
             } else if (template == 'template3') {
                 $('.marginMe h4').css('color', 'white');
                 $('.marginMe h4').css('text-align', 'center');
